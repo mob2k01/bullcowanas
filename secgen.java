@@ -12,10 +12,7 @@ public class Main {
         int length = scanner.nextInt();
         secgene(length);
     }
-    public static void grader(String answer){
-        check("9305",answer);
-
-    }
+   
     public static void secgene(int length){
         if ( length>10 ){
             System.out.println("Error: can't generate a secret number with a length of "+length+" because there aren't enough unique digits.");
