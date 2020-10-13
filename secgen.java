@@ -28,15 +28,13 @@ public class Main {
                     ingen[i] = randomiser();
                 }
             }
+            System.out.print("The random secret number is ");
             for (int i = 0 ; i < ingen.length ; i++ ) {
                 for (int j=0 ; j < ingen.length ; j++ ) {
                     while ( ingen[i] == ingen[j] && i!=j ) {
                         ingen[j] = randomiser();
                     }
                 }
-            }
-            System.out.print("The random secret number is ");
-            for (int i = 0 ; i < ingen.length ; i++ ) {
                 System.out.print(ingen[i]);
             }
             System.out.print(" .");
