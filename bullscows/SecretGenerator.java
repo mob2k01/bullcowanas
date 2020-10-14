@@ -20,34 +20,26 @@ public class SecretGenerator {
             System.out.println("Error: can't generate a secret number with a length of " + length
                 + " because there aren't enough unique digits.");
             return;
-        }
+        }else {
 
         List<Integer> secrets =  new ArrayList<>(length);
-
+        System.out.print("The random secret number is ");
         for (int i = 0; i < secrets.size(); i++) {
             secrets.add(i, generateValue(secrets));
             while (i == 0 && secrets.get(i) == 0) {
-                secrets.add(i, generateValue(secrets));
+                secrets.add(i, generateValue(secrets));     
             }
-        }
-        System.out.print("The random secret number is ");
-//        for (int i = 0; i < secrets.length; i++) {
-//            for (int j = 0; j < secrets.length; j++) {
-//                while (secrets[i] == secrets[j] && i != j) {
-//                    secrets[j] = generateRandom();
-//                }
-//            }
-//            System.out.print(secrets[i]);
-//        }
+            secrets.forEach(System.out::print);
+        } 
         System.out.print(" .");
+        }
     }
-
     private static Integer generateValue(List secrets) {
         Integer value = generateRandom();
-        if (secrets.contains(value)) {
-
+        while (secrets.contains(value)) {
+            value = generateRandom();
         }
-//        return ;
+        return value;
     }
 
     private static Integer generateRandom() {
