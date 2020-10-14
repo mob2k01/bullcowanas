@@ -1,7 +1,7 @@
 package bullscows;
 import java.util.*;
 
-public class Main {
+public class SecretGenerator {
     public static void main(String[] args) {
         //System.out.println("The secret code is prepared: ****.");
         Scanner scanner = new Scanner(System.in);
