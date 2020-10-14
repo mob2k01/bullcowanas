@@ -15,12 +15,6 @@ public class SecretGenerator {
         generateSecret(length);
     }
 
-    public static long randomiser() {
-        Random random = new Random();
-        long value = random.nextInt(9);
-        return value;
-    }
-
     public static void generateSecret(int length) {
         if (length > 10) {
             System.out.println("Error: can't generate a secret number with a length of " + length
@@ -28,22 +22,37 @@ public class SecretGenerator {
             return;
         }
 
-        long[] ingen = new long[length];
-        for (int i = 0; i < ingen.length; i++) {
-            ingen[i] = randomiser();
-            while (i == 0 && ingen[i] == 0) {
-                ingen[i] = randomiser();
+        List<Integer> secrets =  new ArrayList<>(length);
+
+        for (int i = 0; i < secrets.size(); i++) {
+            secrets.add(i, generateValue(secrets));
+            while (i == 0 && secrets.get(i) == 0) {
+                secrets.add(i, generateValue(secrets));
             }
         }
         System.out.print("The random secret number is ");
-        for (int i = 0; i < ingen.length; i++) {
-            for (int j = 0; j < ingen.length; j++) {
-                while (ingen[i] == ingen[j] && i != j) {
-                    ingen[j] = randomiser();
-                }
-            }
-            System.out.print(ingen[i]);
-        }
+//        for (int i = 0; i < secrets.length; i++) {
+//            for (int j = 0; j < secrets.length; j++) {
+//                while (secrets[i] == secrets[j] && i != j) {
+//                    secrets[j] = generateRandom();
+//                }
+//            }
+//            System.out.print(secrets[i]);
+//        }
         System.out.print(" .");
     }
+
+    private static Integer generateValue(List secrets) {
+        Integer value = generateRandom();
+        if (secrets.contains(value)) {
+
+        }
+//        return ;
+    }
+
+    private static Integer generateRandom() {
+        Random random = new Random();
+        return random.nextInt(9);
+    }
+
 }
